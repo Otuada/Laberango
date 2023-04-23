@@ -1,11 +1,14 @@
-import { Route } from "react-router-dom";
+import React from "react";
+import { Router } from "./Routers/Routes";
+import { ThemeProvider } from "@mui/material/styles";
+import theme from "./Constants/theme";
 
 
 function App() {
   return (
-    <div>
-      <Route/>
-    </div>
+    <ThemeProvider theme={theme}>
+      <Router/>
+    </ThemeProvider>
   )
 }
 

@@ -7,22 +7,20 @@ import Restaurants from '../Pages/Restaurants/restaurants'
 import Cart from '../Pages/Cart/cart'
 import Profile from '../Pages/Profile/profile'
 
-const Router = () => {
+export const Router = () => {
     return(
         <BrowserRouter>
             <Routes>
-                <Route index element = {<Login/>}/>
-                <Route path="/signUp" element = {<SignUp/>}/>
-                <Route path="/signUp/adress" element = {<SignUpAdress/>}/>
-                <Route path="/feed" element = {<Feed/>}/>
-                <Route path="/feed/:Id" element = {<Restaurants/>}/>
-                <Route path="/signUp" element = {<SignUp/>}/>
-                <Route path="/cart" element = {<Cart/>}/>
-                <Route path="/profile" element = {<Profile/>}/>
+                <Route path="/" element = {<Login />}/>
+                <Route path="/signUp" element = {<SignUp />}/>
+                <Route path="/signUp/adress" element = {<SignUpAdress />}/>
+                <Route path="/feed" element = {<Feed />}/>
+                <Route path="/feed/:Id" element = {<Restaurants />}/>
+                <Route path="/cart" element = {<Cart />}/>
+                <Route path="/profile" element = {<Profile />}/>
             </Routes>        
         </BrowserRouter>
 
   )
 }
 
-export default Router
