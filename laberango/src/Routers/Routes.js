@@ -11,9 +11,9 @@ export const Router = () => {
     return(
         <BrowserRouter>
             <Routes>
-                <Route path="/" element = {<Login />}/>
-                <Route path="/signUp" element = {<SignUp />}/>
-                <Route path="/signUp/adress" element = {<SignUpAdress />}/>
+                <Route path="/login" element = {<Login />}/>
+                <Route path="/signup" element = {<SignUp />}/>
+                <Route path="/signup/adress" element = {<SignUpAdress />}/>
                 <Route path="/feed" element = {<Feed />}/>
                 <Route path="/feed/:Id" element = {<Restaurants />}/>
                 <Route path="/cart" element = {<Cart />}/>
