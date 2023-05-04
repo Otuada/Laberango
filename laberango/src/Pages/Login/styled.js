@@ -45,5 +45,12 @@ export const ButtonStyled = styled(Button)`
 
 
        } 
-`       
+`  
 
+export const ButtonCadastro = styled(Button)`
+    &&{
+        
+        width: 100%;
+    }
+
+`

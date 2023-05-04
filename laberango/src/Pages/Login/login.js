@@ -1,10 +1,13 @@
 import React, { useState } from "react";
-import { Main, Form,  ButtonStyled, DivPassword, InputMuiMaterial } from "./styled.js";
+import { Main, Form,  ButtonStyled, DivPassword, InputMuiMaterial, ButtonCadastro} from "./styled.js";
 import axios from "axios";
 import { BASE_URL } from "../../Constants/url.js";
 import Visibility from '@mui/icons-material/Visibility';
 import VisibilityOff from '@mui/icons-material/VisibilityOff';
 import IconButton from '@mui/material/IconButton';
+
+
+
 
 const Login = () =>{
     const [email, setEmail] = useState ("")
@@ -18,6 +21,8 @@ const Login = () =>{
     const handleClickShowPassword = () => {
         setShowPassword(!showPassword)
     }
+
+    const navigate = useNavigate()
 
     const onSubmitLogin = (event) =>{
 
@@ -34,6 +39,14 @@ const Login = () =>{
     const LoginApi = async(body) =>{
         await axios.post(`${BASE_URL}/login`,body)
         .then((res) =>{
+            setEmail('')
+            setPassword('')
+            setErrEmail('')
+            setErrPass('')
+            setCheckErrEmail(false)
+            setcheckErrPass(false)
+            localStorage.setItem('token',res.data.token)
+            goToFeed(navigate)
             console.log(res.data)
         })
         .catch((err) =>{
@@ -53,32 +66,32 @@ const Login = () =>{
 
         <Main>
             <p>Entrar</p>
-        <Form onSubmit={onSubmitLogin}>
-            <InputMuiMaterial
-            error={checkErrEmail} 
-            helperText={checkErrEmail ? errEmail:''}
-            id="outlined-basic" 
-            label="Email" 
-            type={"email"}
-            variant="outlined"
-            placeholder={'email@email.com'}
-            value={email}
-            onChange={(event)=> setEmail(event.target.value)}
-            required
-            />
+            <Form onSubmit={onSubmitLogin}>
+                <InputMuiMaterial
+                error={checkErrEmail} 
+                helperText={checkErrEmail ? errEmail:''}
+                id="outlined-basic" 
+                label="Email" 
+                type={"email"}
+                variant="outlined"
+                placeholder={'email@email.com'}
+                value={email}
+                onChange={(event)=> setEmail(event.target.value)}
+                required
+                />
             <DivPassword>
             <InputMuiMaterial 
-            error={checkErrPass}
-            helperText={checkErrPass ? errPass :''}   
-            id="outlined-basic"
-            label="Senha"
-            type={showPassword ? "password" : "text"}
-            variant="outlined"
-            placeholder={'Minimo 6 caracteries'}
-            value={password}
-            onChange={(event) =>setPassword(event.target.value)}
-            inputProps={{minLength:6, text:"A senha precisa conter no minimo 6 caracteres"}}
-            required
+                 error={checkErrPass}
+                helperText={checkErrPass ? errPass :''}   
+                id="outlined-basic"
+                label="Senha"
+                type={showPassword ? "password" : "text"}
+                variant="outlined"
+                placeholder={'Minimo 6 caracteries'}
+                value={password}
+                onChange={(event) =>setPassword(event.target.value)}
+                inputProps={{minLength:6, text:"A senha precisa conter no minimo 6 caracteres"}}
+                required
             />
             <IconButton
                   aria-label="toggle password visibility"
@@ -86,13 +99,23 @@ const Login = () =>{
                   edge="end"
                 >
                   {showPassword ? <VisibilityOff /> : <Visibility />}
-                </IconButton>
+            </IconButton>
                 </DivPassword>
           
             <ButtonStyled type='submit'>Entrar</ButtonStyled>
+            <ButtonCadastro 
+                    type='submit'
+                    color="secondary"
+                    disabled={false}
+                    size="medium"
+                    variant="elevated"
+                >
+                    Não tem cadastro? click aqui! 
+            </ButtonCadastro>
         </Form>
             
-        </Main>
+                
+    </Main>
     
 )}
 
