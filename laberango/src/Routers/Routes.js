@@ -3,21 +3,26 @@ import Login from '../Pages/Login/login'
 import SignUp from '../Pages/SignUp/SignUp'
 import SignUpAdress from "../Pages/SignUpAdress/signUpAdress"
 import Feed from '../Pages/Feed/feed'
-import Restaurants from '../Pages/Restaurants/restaurants'
+import Restaurant from '../Pages/Restaurants/restaurants'
 import Cart from '../Pages/Cart/cart'
 import Profile from '../Pages/Profile/profile'
+import AdressEdit from "../Pages/AdressEdit/adressEdit"
+import ProfileEdit from "../Pages/ProfileEdit/profileEdit"
+
 
 export const Router = () => {
     return(
         <BrowserRouter>
             <Routes>
-                <Route path="/" element = {<Login />}/>
-                <Route path="/signup" element = {<SignUp />}/>
-                <Route path="/signup/adress" element = {<SignUpAdress />}/>
-                <Route path="/feed" element = {<Feed />}/>
-                <Route path="/feed/:Id" element = {<Restaurants />}/>
-                <Route path="/cart" element = {<Cart />}/>
-                <Route path="/profile" element = {<Profile />}/>
+                <Route index element={<Feed/>}/>
+                <Route path='/login' element={<Login/>}/>
+                <Route path='/signUp' element={<SignUp/>}/>
+                <Route path='/signUp/adress' element={<SignUpAdress/>}/>
+                <Route path='/adressEdit/:id' element={<AdressEdit/>}/>
+                <Route path='/feed/:restaurantId' element={<Restaurant/>}/>
+                <Route path='/profile' element={<Profile/>}/>
+                <Route path='/profile/:id' element={<ProfileEdit/>}/>
+                <Route path='/cart' element={<Cart/>}/>
             </Routes>        
         </BrowserRouter>
 
