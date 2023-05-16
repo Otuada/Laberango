@@ -54,3 +54,11 @@ export const ButtonCadastro = styled(Button)`
     }
 
 `
+
+export const PassDiv = styled.div`
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    p{
+        font-size: 1rem;
+    }
