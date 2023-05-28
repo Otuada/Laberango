@@ -62,3 +62,4 @@ export const PassDiv = styled.div`
     p{
         font-size: 1rem;
     }
+`

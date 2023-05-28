@@ -40,7 +40,7 @@ export const DivPassword = styled.div`
 
 export const ButtonStyled = styled(Button)`
        &&{
-        background-color: #A3EF1B;   
+        background-color: #bc3c24;   
         width: 100%;
 
 
