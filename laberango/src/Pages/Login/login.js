@@ -1,12 +1,15 @@
 import React, { useState } from "react";
-import { Main, Form,  ButtonStyled, DivPassword, InputMuiMaterial, ButtonCadastro} from "./styled.js";
+import { Main, Form,  ButtonStyled, DivPassword, InputMuiMaterial, ButtonCadastro, StyledIconButton} from "./styled.js";
 import axios from "axios";
 import { BASE_URL } from "../../Constants/url.js";
 import Visibility from '@mui/icons-material/Visibility';
 import VisibilityOff from '@mui/icons-material/VisibilityOff';
-import IconButton from '@mui/material/IconButton';
 import { useNavigate } from 'react-router-dom';
-import { goToFeed } from '../../Routers/coordinator';
+import LogoB from "../../Assents/laberangoFundoBranco.png";
+import { goToSignUp } from '../../Routers/coordinator';
+import { goToRestaurants } from '../../Routers/coordinator';
+
+
 
 
 const Login = () =>{
@@ -46,7 +49,7 @@ const Login = () =>{
             setCheckErrEmail(false)
             setcheckErrPass(false)
             localStorage.setItem('token',res.data.token)
-            goToFeed(navigate)
+            goToRestaurants(navigate)
             console.log(res.data)
         })
         .catch((err) =>{
@@ -57,7 +60,7 @@ const Login = () =>{
                 setErrEmail(err.response.data.message)
                 setCheckErrEmail(true)
             }
-            console.log(err.response.data.message)
+            console.log(err)
         })
     }
 
@@ -65,7 +68,7 @@ const Login = () =>{
 
 
         <Main>
-            <p>Entrar</p>
+            <img src={LogoB} alt={LogoB}/>
             <Form onSubmit={onSubmitLogin}>
                 <InputMuiMaterial
                 error={checkErrEmail} 
@@ -93,22 +96,23 @@ const Login = () =>{
                 inputProps={{minLength:6, text:"A senha precisa conter no minimo 6 caracteres"}}
                 required
             />
-            <IconButton
+            <StyledIconButton
                   aria-label="toggle password visibility"
                   onClick={handleClickShowPassword}
                   edge="end"
                 >
                   {showPassword ? <VisibilityOff /> : <Visibility />}
-            </IconButton>
+            </StyledIconButton>
                 </DivPassword>
           
-            <ButtonStyled type='submit'>Entrar</ButtonStyled>
+            <ButtonStyled type='submit'onClick={() => goToRestaurants()}>Entrar</ButtonStyled>
             <ButtonCadastro 
                     type='submit'
                     color="secondary"
                     disabled={false}
                     size="medium"
                     variant="elevated"
+                    onClick={() => goToSignUp()}
                 >
                     Não tem cadastro? click aqui! 
             </ButtonCadastro>

@@ -17,7 +17,9 @@ const Feed = () =>{
     return(
         <Divfeed>
 
-            <Botao className="full-width-button" onclick={() => vaiPraPageLogin} > <img src={Logo} alt={Logo}/> </Botao>
+            <Botao className="full-width-button" onClick={() => vaiPraPageLogin()} > 
+            <img src={Logo} alt={Logo} /> 
+            </Botao>
         </Divfeed>
     )
 }

@@ -1,15 +1,20 @@
 export const goToLogin = (navigate) =>{
-    navigate('/')
+    navigate('/login')
 }
 
 export const goToFeed = (navigate) =>{
-    navigate('/feed')
+    navigate('/')
 }
 
-export const gotoSignUp = (navigate) =>{
+export const goToSignUp = (navigate) =>{
     navigate('/signUp')
 }
 
-export const gotoSignUpAdress = (navigate) =>{
+export const goToSignUpAdress = (navigate) =>{
     navigate('/signUp/adress')
+}
+
+
+export const goToRestaurants = (navigate) =>{
+    navigate('/restaurants')
 }

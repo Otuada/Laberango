@@ -8,8 +8,8 @@ import { IconButton } from "@mui/material";
 import axios from 'axios';
 import { BASE_URL } from '../../Constants/url';
 import { useNavigate } from 'react-router-dom';
-import { gotoSignUpAdress  } from '../../Routers/coordinator';
-//import Header from '../../Components/Header/Header';
+import { goToSignUpAdress  } from '../../Routers/coordinator';
+
 
 const SignUp = () =>{
     const { form, onChange, clean } = useForm(
@@ -45,6 +45,19 @@ const SignUp = () =>{
         setShowCheckPass(!showCheckPass)
     }
 
+    const signUpPerson = async() =>{
+        await axios.post(`${BASE_URL}/signUp`,form)
+        .then((res)=>{
+            localStorage.setItem('token',res.data.token)
+            alert(`boas vindas ${res.data.user.name}`)
+            goToSignUpAdress(navigate)
+        })
+        .catch((err)=>{
+            alert(err.response.data.message)    
+            clean()
+            setConfirmPassword('') 
+        })
+    }     
     const onSubmitForm = (event)=>{
         event.preventDefault()
         
@@ -56,19 +69,6 @@ const SignUp = () =>{
           
         }
 
-        const signUpPerson = async() =>{
-            await axios.post(`${BASE_URL}/signUp`,form)
-            .then((res)=>{
-                localStorage.setItem('token',res.data.token)
-                alert(`boas vindas ${res.data.user.name}`)
-                gotoSignUpAdress(navigate)
-            })
-            .catch((err)=>{
-                alert(err.response.data.message)    
-                clean()
-                setConfirmPassword('') 
-            })
-        }     
 
     return(
         <Main>
