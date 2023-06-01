@@ -7,7 +7,7 @@ import VisibilityOff from '@mui/icons-material/VisibilityOff';
 import { useNavigate } from 'react-router-dom';
 import LogoB from "../../Assents/laberangoFundoBranco.png";
 import { goToSignUp } from '../../Routers/coordinator';
-import { goToRestaurants } from '../../Routers/coordinator';
+import { goToFeed } from '../../Routers/coordinator';
 
 
 
@@ -49,7 +49,7 @@ const Login = () =>{
             setCheckErrEmail(false)
             setcheckErrPass(false)
             localStorage.setItem('token',res.data.token)
-            goToRestaurants(navigate)
+            goToFeed(navigate)
             console.log(res.data)
         })
         .catch((err) =>{
@@ -105,14 +105,14 @@ const Login = () =>{
             </StyledIconButton>
                 </DivPassword>
           
-            <ButtonStyled type='submit'onClick={() => goToRestaurants()}>Entrar</ButtonStyled>
+            <ButtonStyled type='submit'>Entrar</ButtonStyled>
             <ButtonCadastro 
-                    type='submit'
+                    type='button'
                     color="secondary"
                     disabled={false}
                     size="medium"
                     variant="elevated"
-                    onClick={() => goToSignUp()}
+                    onClick={() => goToSignUp(navigate)}
                 >
                     Não tem cadastro? click aqui! 
             </ButtonCadastro>
