@@ -8,13 +8,15 @@ import Cart from '../Pages/Cart/cart'
 import Profile from '../Pages/Profile/profile'
 import AdressEdit from "../Pages/AdressEdit/adressEdit"
 import ProfileEdit from "../Pages/ProfileEdit/profileEdit"
+import Home from "../Pages/Home/home"
 
 
 export const Router = () => {
     return(
         <BrowserRouter>
             <Routes>
-                <Route index element={<Feed/>}/>
+                <Route index element={<Home/>}/>
+                <Route path='/feed' element={<Feed/>}/>
                 <Route path='/login' element={<Login/>}/>
                 <Route path='/signUp' element={<SignUp/>}/>
                 <Route path='/signUp/adress' element={<SignUpAdress/>}/>
