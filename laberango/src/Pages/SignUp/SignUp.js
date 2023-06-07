@@ -1,13 +1,14 @@
 import React, { useState } from "react";
 import { useForm } from "../../Hooks/useForm";
-import { Main, InputMuiMaterial, PassDiv } from "./styled";
+import { Main, InputMuiMaterial, PassDiv, DivP, ButtonStyled, IconButtonOlho, IconButtonOlho2 } from "./styled";
 import Visibility from "@mui/icons-material/Visibility";
 import VisibilityOff from "@mui/icons-material/VisibilityOff";
-import { IconButton } from "@mui/material";
+
 import axios from "axios";
 import { BASE_URL } from "../../Constants/url";
 import { useNavigate } from "react-router-dom";
 import { goToSignUpAdress } from "../../Routers/coordinator";
+import LogoB from "../../Assents/laberangoFundoBranco.png"
 
 const SignUp = () => {
   const { form, onChange, clean } = useForm({
@@ -69,7 +70,10 @@ const SignUp = () => {
 
   return (
     <Main>
+      <img src={LogoB} alt={LogoB}/>
+      <DivP>
       <p>CADASTRAR</p>
+      </DivP>
       <form onSubmit={onSubmitForm}>
         <InputMuiMaterial
           id="outlined-basic"
@@ -116,13 +120,13 @@ const SignUp = () => {
             required
           />
 
-          <IconButton
+          <IconButtonOlho2
             aria-label="toggle password visibility"
             onClick={handleClickShowPassword}
             edge="end"
           >
             {showPass ? <Visibility /> : <VisibilityOff />}
-          </IconButton>
+          </IconButtonOlho2>
         </PassDiv>
         <PassDiv>
           <InputMuiMaterial
@@ -137,16 +141,17 @@ const SignUp = () => {
             onChange={(e) => setConfirmPassword(e.target.value)}
             required
           />
-          <IconButton
+          <IconButtonOlho
             aria-label="toggle password visibility"
             onClick={handleClickShowCheckPassword}
             edge="end"
           >
             {showCheckPass ? <Visibility /> : <VisibilityOff />}
-          </IconButton>
+          </IconButtonOlho>
         </PassDiv>
-        <button type="submit">Entrar</button>
+        <ButtonStyled type="submit">Entrar</ButtonStyled>
       </form>
+        
     </Main>
   );
 };

@@ -105,7 +105,12 @@ const Login = () =>{
             </StyledIconButton>
                 </DivPassword>
           
-            <ButtonStyled type='submit'>Entrar</ButtonStyled>
+            <ButtonStyled 
+                    type='submit'
+                    onClick={() => goToFeed(navigate) }                    
+                    >
+                        Entrar                    
+                    </ButtonStyled>
             <ButtonCadastro 
                     type='button'
                     color="secondary"
