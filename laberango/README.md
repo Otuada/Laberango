@@ -1,6 +1,6 @@
-###Laberango        
+###LabeRango        
 
--Projeto de site de delivery
+-Projeto de site de delivery(Labenu)
 
 ###Tecnologias
 

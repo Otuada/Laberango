@@ -1,12 +1,17 @@
 import styled from "styled-components";
 
 export const DivHeader = styled.div`
-     width: 175px;
-     height: 44px;
-     margin: 20px 92px 0 93px;
-     padding: 13px 50.5px 12px;
+     display: flex;
+     justify-content: center;
+     border: 1px solid black;
+     padding: 0.5rem;
+     width:100%;
+     align-items: center;
+     
 `;
 export const Title = styled.h1`
+    display: flex;
+    justify-content: center;
     font-family: Roboto;
     font-size: 16px;
     font-weight: normal;
@@ -17,3 +22,5 @@ export const Title = styled.h1`
     text-align: center;
     color: black;
 `
+
+

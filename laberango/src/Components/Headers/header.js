@@ -2,9 +2,10 @@ import React from "react";
 import { DivHeader, Title } from "./styled";
 
 export const Header = ({title}) => {
-    return
+    return(
     <DivHeader>
         <Title>{title}</Title>
-
     </DivHeader>
+    )
 }
+

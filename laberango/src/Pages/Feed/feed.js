@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from "react";
 import { BASE_URL } from "../../Constants/url";
 import axios from "axios";
-import { ContainerFeed, CardResta, InputFeed } from "./styled";
+import { ContainerFeed, CardResta, InputFeed, Menu, MenuItens } from "./styled";
 import CardRestaurant from "../../Components/cardRestaurant/cardRestaurant";
-import { Header } from "../../Components/header/header";
+import { Header } from "../../Components/Headers/header";
 
 export const Feed = () =>{
     const [restaurants, setRestaurants] = useState([])
@@ -29,8 +29,16 @@ export const Feed = () =>{
     return (
     <ContainerFeed>
         <Header title={"LabeRango"}/>
-        <CardResta>
         <InputFeed></InputFeed>
+        <Menu>
+            <MenuItens select ={true}>Burguer</MenuItens>
+            <MenuItens select ={false}>Massas</MenuItens>
+            <MenuItens select ={false}>Assiática</MenuItens>
+            <MenuItens select ={false}>Saudável</MenuItens>
+            <MenuItens select ={false}>Promoção</MenuItens>
+            <MenuItens select ={false}>Bebidas</MenuItens>        
+        </Menu>
+        <CardResta>
              {restaurants.map((restaurant) =>{
                 return <CardRestaurant restaurant={restaurant}/>
              }
