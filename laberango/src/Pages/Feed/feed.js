@@ -7,6 +7,7 @@ import { Header } from "../../Components/Headers/header";
 
 export const Feed = () =>{
     const [restaurants, setRestaurants] = useState([])
+    const [inputSearch, setInputSearch] = useState('')
     const getRestaurants = () => {
         axios
         .get(`${BASE_URL}/restaurants`,{
@@ -22,14 +23,25 @@ export const Feed = () =>{
             console.log(err)
         })
     }
-    
+    console.log(inputSearch)
     useEffect(() =>{
         getRestaurants()
     }, [])
+    const filterRestaurant = restaurants.filter((restaurant) => {
+        return inputSearch ? restaurant.name.toLowerCase().includes(inputSearch.toLowerCase()) : true;
+      }).map((restaurant) =>{
+        return <CardRestaurant restaurant={restaurant}/>
+     })
+      
+
+   
     return (
     <ContainerFeed>
         <Header title={"LabeRango"}/>
-        <InputFeed></InputFeed>
+        <InputFeed
+            value={inputSearch}
+            onChange={(event)=>setInputSearch(event.target.value)}
+        />
         <Menu>
             <MenuItens select ={true}>Burguer</MenuItens>
             <MenuItens select ={false}>Massas</MenuItens>
@@ -39,10 +51,7 @@ export const Feed = () =>{
             <MenuItens select ={false}>Bebidas</MenuItens>        
         </Menu>
         <CardResta>
-             {restaurants.map((restaurant) =>{
-                return <CardRestaurant restaurant={restaurant}/>
-             }
-             )}
+             {filterRestaurant}
         </CardResta>
     </ContainerFeed>
     )
