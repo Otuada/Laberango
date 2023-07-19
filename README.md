@@ -10,7 +10,6 @@ Styled Components
 
 Axios
 
-Material-Ui
 
 # Funcionalidades
 O App é uma rede de alimentação aonde o usuário pode escolher entre diversas categorias para adquirir a melhor opção para sua refeição.
